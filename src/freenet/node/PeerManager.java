@@ -1265,9 +1265,9 @@ public class PeerManager {
 		}
 		boolean darknetDefinitelyPortForwarded = node.darknetDefinitelyPortForwarded();
 		boolean darknetAssumeNAT = node.darknetCrypto.config.alwaysHandshakeAggressively();
-		//addeded by lusha
+		 
 		PeerNodeStatus[] peerNodeStatuses = this.getPeerNodeStatuses(true);
-		//addeded by lusha
+		 
 		
 		synchronized(ua) {
 			ua.opennetDefinitelyPortForwarded = opennetDefinitelyPortForwarded;
@@ -1276,14 +1276,12 @@ public class PeerManager {
 			ua.darknetAssumeNAT = darknetAssumeNAT;
 			ua.darknetConns = getPeerNodeStatusSize(PEER_NODE_STATUS_CONNECTED, true) +
 				getPeerNodeStatusSize(PEER_NODE_STATUS_ROUTING_BACKED_OFF, true);
-			//removed by lusha
+			 
 			//ua.conns = getPeerNodeStatusSize(PEER_NODE_STATUS_CONNECTED, false) +
 			//	getPeerNodeStatusSize(PEER_NODE_STATUS_ROUTING_BACKED_OFF, false);			
-			//removed by lusha
-			
-			//added by lusha
+			 
 			ua.conns= PeerNodeStatus.getPeerStatusCount(peerNodeStatuses, PeerManager.PEER_NODE_STATUS_CONNECTED)+PeerNodeStatus.getPeerStatusCount(peerNodeStatuses, PeerManager.PEER_NODE_STATUS_ROUTING_BACKED_OFF);
-			//added by lusha
+			 
 			ua.darknetPeers = darknetPeers;
 			ua.disconnDarknetPeers = darknetPeers - ua.darknetConns;
 			ua.peers = peers;
